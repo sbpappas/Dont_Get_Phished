@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhishGuard &mdash; Phishing URL Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>🛡 PhishGuard</h1>
+      <p class="tagline">Paste a URL. Get an explainable phishing risk report &mdash; not just a score, but why.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form method="post" class="analyze-form">
+      <input
+        type="text"
+        name="url"
+        placeholder="https://example.com/login"
+        value="{{ submitted_url }}"
+        autofocus
+        required
+      >
+      <label class="offline-toggle">
+        <input type="checkbox" name="offline" value="1" {% if offline %}checked{% endif %}>
+        Offline mode (URL structure only, no live fetch)
+      </label>
+      <button type="submit">Analyze</button>
+    </form>
+
+    {% if error %}
+      <div class="card error">{{ error }}</div>
+    {% endif %}
+
+    {% if result %}
+      <section class="card verdict verdict-{{ result.verdict|replace(' ', '-')|lower }}">
+        <div class="verdict-row">
+          <div>
+            <div class="verdict-label">{{ result.verdict }}</div>
+            <div class="domain">{{ result.domain }}</div>
+          </div>
+          <div class="score-badge">{{ result.score }}<span>/100</span></div>
+        </div>
+        <div class="submeta">
+          {% if result.ml_probability is not none %}
+            ML model: {{ "%.1f"|format(result.ml_probability * 100) }}% probability of phishing
+            &nbsp;|&nbsp; Heuristics: {{ result.heuristic_score }}/100
+          {% else %}
+            Heuristic score only (ML model unavailable this run): {{ result.heuristic_score }}/100
+          {% endif %}
+        </div>
+        {% if not result.fetched_live %}
+          <div class="submeta muted">
+            Live page was not fetched{% if result.fetch_error %}: {{ result.fetch_error }}{% endif %}.
+          </div>
+        {% endif %}
+        {% if result.final_url and result.final_url != result.url %}
+          <div class="submeta muted">Landed at: {{ result.final_url }}</div>
+        {% endif %}
+      </section>
+
+      <section class="card">
+        <h2>Findings</h2>
+        {% if result.findings %}
+          <ul class="findings">
+            {% for f in result.findings|sort(attribute="points", reverse=True) %}
+              <li class="finding sev-{{ f.severity }}">
+                <span class="sev-tag">{{ f.severity }}</span>
+                <span class="points">+{{ f.points }}</span>
+                <span class="message">{{ f.message }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="muted">No red flags detected by the heuristic engine.</p>
+        {% endif %}
+      </section>
+
+      <p class="disclaimer">
+        This is an educational portfolio tool, not a substitute for a dedicated
+        security product. Never enter credentials on a page flagged
+        <strong>Suspicious</strong> or <strong>Likely Phishing</strong>.
+      </p>
+    {% endif %}
+  </main>
+
+  <footer class="wrap">
+    <p>PhishGuard &middot; rule-based heuristics + a RandomForest classifier trained on the
+      <a href="https://github.com/GregaVrbancic/Phishing-Dataset" target="_blank" rel="noopener">
+        Vrban&#269;i&#269; et al. phishing dataset</a>.</p>
+  </footer>
+</body>
+</html>

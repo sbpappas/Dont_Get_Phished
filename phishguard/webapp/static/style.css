@@ -1,0 +1,177 @@
+:root {
+  --bg: #0f1115;
+  --surface: #171a21;
+  --border: #262a33;
+  --text: #e6e8ec;
+  --muted: #9aa1ac;
+  --safe: #2fbf71;
+  --suspicious: #e0a52c;
+  --danger: #e0483e;
+  --accent: #5b8def;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 32px 0 24px;
+}
+
+h1 { margin: 0 0 6px; font-size: 1.6rem; }
+.tagline { margin: 0; color: var(--muted); }
+
+.analyze-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 28px 0 20px;
+}
+
+.analyze-form input[type="text"] {
+  flex: 1 1 320px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.analyze-form button {
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.analyze-form button:hover { opacity: 0.9; }
+
+.offline-toggle {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.card.error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.verdict-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.verdict-label { font-size: 1.4rem; font-weight: 700; }
+.domain { color: var(--muted); font-size: 0.95rem; margin-top: 2px; }
+
+.score-badge {
+  font-size: 1.8rem;
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 6px 14px;
+}
+.score-badge span { font-size: 1rem; font-weight: 500; color: var(--muted); }
+
+.verdict-likely-safe .verdict-label,
+.verdict-likely-safe .score-badge { color: var(--safe); }
+.verdict-suspicious .verdict-label,
+.verdict-suspicious .score-badge { color: var(--suspicious); }
+.verdict-likely-phishing .verdict-label,
+.verdict-likely-phishing .score-badge { color: var(--danger); }
+
+.verdict-likely-safe { border-color: var(--safe); }
+.verdict-suspicious { border-color: var(--suspicious); }
+.verdict-likely-phishing { border-color: var(--danger); }
+
+.submeta { margin-top: 10px; font-size: 0.9rem; color: var(--muted); }
+.submeta.muted { font-style: italic; }
+
+h2 { margin-top: 0; font-size: 1.1rem; }
+
+.findings { list-style: none; margin: 0; padding: 0; }
+
+.finding {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.finding:last-child { border-bottom: none; }
+
+.sev-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.sev-low .sev-tag { background: #2a2e37; color: var(--muted); }
+.sev-medium .sev-tag { background: #3a2f14; color: var(--suspicious); }
+.sev-high .sev-tag { background: #3a1f1c; color: #ff8a75; }
+.sev-critical .sev-tag { background: #3a1414; color: var(--danger); }
+
+.points { color: var(--muted); font-size: 0.85rem; flex-shrink: 0; }
+.message { color: var(--text); }
+
+.muted { color: var(--muted); }
+
+.disclaimer {
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+footer {
+  padding: 24px 0 48px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+footer a { color: var(--accent); }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --border: #e3e6eb;
+    --text: #1b1e24;
+    --muted: #676e7a;
+  }
+  .sev-low .sev-tag { background: #eef0f3; }
+  .sev-medium .sev-tag { background: #fdf1dc; }
+  .sev-high .sev-tag { background: #fbe4e0; }
+  .sev-critical .sev-tag { background: #fadbd8; }
+}
