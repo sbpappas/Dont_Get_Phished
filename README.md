@@ -127,17 +127,17 @@ heuristic score alone.
 
 ```bash
 # Full live analysis (DNS, WHOIS, TLS, page content)
-python -m phishguard analyze https://example.com/login
+python3 -m phishguard analyze https://example.com/login
 
 # URL structure only, no network calls
-python -m phishguard analyze https://example.com/login --offline
+python3 -m phishguard analyze https://example.com/login --offline
 
 # Machine-readable output
-python -m phishguard analyze https://example.com/login --json
+python3 -m phishguard analyze https://example.com/login --json
 
 # Batch mode: one URL per line
-python -m phishguard batch urls.txt
-python -m phishguard batch urls.txt --json
+python3 -m phishguard batch urls.txt
+python3 -m phishguard batch urls.txt --json
 ```
 
 ### Web dashboard
