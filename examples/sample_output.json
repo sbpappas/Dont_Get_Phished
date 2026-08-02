@@ -1,0 +1,38 @@
+{
+  "url": "http://paypal-secure-login.xyz/verify/account/update.php?id=1",
+  "domain": "paypal-secure-login.xyz",
+  "checked_at": "2026-08-02T02:43:58.797515+00:00",
+  "verdict": "Likely Phishing",
+  "score": 60,
+  "ml_probability": null,
+  "heuristic_score": 60,
+  "findings": [
+    {
+      "code": "suspicious_tld",
+      "message": "Top-level domain '.xyz' is frequently abused for low-cost, throwaway phishing domains.",
+      "severity": "medium",
+      "points": 10
+    },
+    {
+      "code": "no_https",
+      "message": "URL does not use HTTPS.",
+      "severity": "medium",
+      "points": 10
+    },
+    {
+      "code": "brand_in_domain_mismatch",
+      "message": "Domain contains the brand name 'paypal' but is not 'paypal.com' (registered domain is 'paypal-secure-login.xyz') -- classic impersonation pattern.",
+      "severity": "critical",
+      "points": 30
+    },
+    {
+      "code": "suspicious_keyword_cluster",
+      "message": "URL contains multiple credential/urgency-themed keywords: login, verify, secure, account, update.",
+      "severity": "medium",
+      "points": 10
+    }
+  ],
+  "fetched_live": false,
+  "fetch_error": null,
+  "final_url": null
+}

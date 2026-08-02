@@ -1,0 +1,208 @@
+{
+  "feature_order": [
+    "qty_dot_url",
+    "qty_hyphen_url",
+    "qty_underline_url",
+    "qty_slash_url",
+    "qty_questionmark_url",
+    "qty_equal_url",
+    "qty_at_url",
+    "qty_and_url",
+    "qty_exclamation_url",
+    "qty_tilde_url",
+    "qty_tld_url",
+    "length_url",
+    "qty_dot_domain",
+    "qty_hyphen_domain",
+    "qty_underline_domain",
+    "qty_vowels_domain",
+    "domain_length",
+    "domain_in_ip",
+    "server_client_domain",
+    "qty_dot_directory",
+    "qty_hyphen_directory",
+    "qty_slash_directory",
+    "directory_length",
+    "file_length",
+    "qty_params",
+    "tld_present_params",
+    "params_length",
+    "email_in_url",
+    "url_shortened",
+    "time_response",
+    "domain_spf",
+    "time_domain_activation",
+    "time_domain_expiration",
+    "qty_ip_resolved",
+    "qty_nameservers",
+    "qty_mx_servers",
+    "ttl_hostname",
+    "tls_ssl_certificate",
+    "qty_redirects"
+  ],
+  "label_column": "phishing",
+  "n_train": 46916,
+  "n_test": 11729,
+  "roc_auc": 0.9854,
+  "classification_report": "              precision    recall  f1-score   support\n\n  legitimate       0.94      0.93      0.94      5600\n    phishing       0.94      0.95      0.94      6129\n\n    accuracy                           0.94     11729\n   macro avg       0.94      0.94      0.94     11729\nweighted avg       0.94      0.94      0.94     11729\n",
+  "top_features": [
+    {
+      "name": "directory_length",
+      "importance": 0.1308
+    },
+    {
+      "name": "qty_slash_directory",
+      "importance": 0.1071
+    },
+    {
+      "name": "time_domain_activation",
+      "importance": 0.1067
+    },
+    {
+      "name": "length_url",
+      "importance": 0.0929
+    },
+    {
+      "name": "qty_slash_url",
+      "importance": 0.0923
+    },
+    {
+      "name": "qty_dot_directory",
+      "importance": 0.0807
+    },
+    {
+      "name": "qty_hyphen_directory",
+      "importance": 0.0791
+    },
+    {
+      "name": "file_length",
+      "importance": 0.0756
+    },
+    {
+      "name": "qty_dot_domain",
+      "importance": 0.0322
+    },
+    {
+      "name": "ttl_hostname",
+      "importance": 0.0239
+    },
+    {
+      "name": "time_domain_expiration",
+      "importance": 0.022
+    },
+    {
+      "name": "time_response",
+      "importance": 0.0219
+    },
+    {
+      "name": "domain_length",
+      "importance": 0.0168
+    },
+    {
+      "name": "qty_nameservers",
+      "importance": 0.0128
+    },
+    {
+      "name": "qty_vowels_domain",
+      "importance": 0.0109
+    },
+    {
+      "name": "qty_mx_servers",
+      "importance": 0.0106
+    },
+    {
+      "name": "qty_ip_resolved",
+      "importance": 0.0106
+    },
+    {
+      "name": "qty_hyphen_url",
+      "importance": 0.0094
+    },
+    {
+      "name": "qty_dot_url",
+      "importance": 0.0093
+    },
+    {
+      "name": "qty_params",
+      "importance": 0.0086
+    },
+    {
+      "name": "params_length",
+      "importance": 0.0077
+    },
+    {
+      "name": "tld_present_params",
+      "importance": 0.0071
+    },
+    {
+      "name": "qty_redirects",
+      "importance": 0.0057
+    },
+    {
+      "name": "tls_ssl_certificate",
+      "importance": 0.0056
+    },
+    {
+      "name": "qty_equal_url",
+      "importance": 0.0038
+    },
+    {
+      "name": "qty_hyphen_domain",
+      "importance": 0.0036
+    },
+    {
+      "name": "domain_spf",
+      "importance": 0.0036
+    },
+    {
+      "name": "qty_underline_url",
+      "importance": 0.0026
+    },
+    {
+      "name": "qty_tld_url",
+      "importance": 0.0022
+    },
+    {
+      "name": "url_shortened",
+      "importance": 0.0021
+    },
+    {
+      "name": "qty_and_url",
+      "importance": 0.001
+    },
+    {
+      "name": "email_in_url",
+      "importance": 0.0003
+    },
+    {
+      "name": "domain_in_ip",
+      "importance": 0.0003
+    },
+    {
+      "name": "qty_at_url",
+      "importance": 0.0003
+    },
+    {
+      "name": "qty_exclamation_url",
+      "importance": 0.0
+    },
+    {
+      "name": "server_client_domain",
+      "importance": 0.0
+    },
+    {
+      "name": "qty_questionmark_url",
+      "importance": 0.0
+    },
+    {
+      "name": "qty_tilde_url",
+      "importance": 0.0
+    },
+    {
+      "name": "qty_underline_domain",
+      "importance": 0.0
+    }
+  ],
+  "source_dataset": "GregaVrbancic/Phishing-Dataset (dataset_small.csv)",
+  "model": "sklearn.ensemble.RandomForestClassifier"
+}
