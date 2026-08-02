@@ -143,7 +143,7 @@ python3 -m phishguard batch urls.txt --json
 ### Web dashboard
 
 ```bash
-FLASK_APP=phishguard.webapp.app python -m flask run
+FLASK_APP=phishguard.webapp.app python3 -m flask run
 ```
 
 Then open `http://127.0.0.1:5000`, paste a URL, and read the report —
